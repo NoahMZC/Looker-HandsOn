@@ -16,12 +16,12 @@ explore: transaction {
   group_label: "Looker HandsON"
   label: "거래 정보"
   join: products {
-    type: left_outer
+    type: full_outer
     sql_on: ${transaction.product_id} = ${products.id} ;;
     relationship: many_to_one
   }
   join: channels {
-    type: left_outer
+    type: full_outer
     sql_on: ${transaction.channel_id} = ${channels.id};;
     relationship: many_to_one
   }
