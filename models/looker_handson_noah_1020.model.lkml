@@ -1,19 +1,28 @@
 connection: "looker_handson"
 
-# include all the views
 include: "/views/**/*.view"
 
-datagroup: looker_handson_noah_1020_default_datagroup {
-  # sql_trigger: SELECT MAX(id) FROM etl_log;;
-  max_cache_age: "1 hour"
+explore: channels {
+  group_label: "Looker HandsON"
+  label: "채널 정보"
 }
 
-persist_with: looker_handson_noah_1020_default_datagroup
+explore: products {
+  group_label: "Looker HandsON"
+  label: "제품 정보"
+}
 
-explore: channels {}
-
-explore: products {}
-
-explore: transaction {}
-
-explore: stores {}
+explore: transaction {
+  group_label: "Looker HandsON"
+  label: "거래 정보"
+  join: products {
+    type: left_outer
+    sql_on: ${transaction.product_id} = ${products.id} ;;
+    relationship: many_to_one
+  }
+  join: channels {
+    type: left_outer
+    sql_on: ${transaction.channel_id} = ${channels.id};;
+    relationship: many_to_one
+  }
+}
