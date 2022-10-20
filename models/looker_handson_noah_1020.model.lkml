@@ -25,4 +25,9 @@ explore: transaction {
     sql_on: ${transaction.channel_id} = ${channels.id};;
     relationship: many_to_one
   }
+  join: stores {
+    type: full_outer
+    sql_on: ${stores.id} = ${transaction.store_id} ;;
+    relationship: many_to_one
+  }
 }

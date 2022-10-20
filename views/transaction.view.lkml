@@ -46,6 +46,10 @@ view: transaction {
     type: string
     sql: ${TABLE}.channel_id ;;
   }
+  dimension: store_id {
+    type: string
+    sql: ${TABLE}.store_id ;;
+  }
   measure: sale_price {
     label: "판매액"
     type: sum

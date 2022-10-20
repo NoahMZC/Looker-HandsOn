@@ -9,14 +9,10 @@ view: stores {
     sql: ${TABLE}.ID ;;
   }
 
-  dimension: latitude {
-    type: number
-    sql: ${TABLE}.Latitude ;;
-  }
-
-  dimension: longitude {
-    type: number
-    sql: ${TABLE}.Longitude ;;
+  dimension: map_data {
+    type: location
+    sql_latitude: ${TABLE}.Latitude ;;
+    sql_longitude: ${TABLE}.Longitude ;;
   }
 
   dimension: name {
